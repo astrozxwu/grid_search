@@ -16,7 +16,7 @@ def chi2(theta,param_fix):
         _chi2 += getchi2_single(i, model, blending=_bl)[0]
     return _chi2 
 def grid(param_fix):
-    res = minimize(chi2, x0=init, method='nelder-mead', args=(param_fix), bounds=[[9500,9700],[-2,2],[10,500],[0.5,30]], options={'xatol':5e-3,'fatol':3,'disp':False})
+    res = minimize(chi2, x0=init, method='nelder-mead', args=(param_fix), bounds=[[9400,9800],[-2,2],[10,500],[0.5,30]], options={'xatol':5e-3,'fatol':2,'disp':False})
     _t0,_u0,_tE,_tstar = res.x
     param = {'chi2':res.fun,'covergence':1*res.success,'t0':_t0,'u0':_u0,'tE':_tE,'tstar':_tstar} 
     return {**param,**param_fix}
